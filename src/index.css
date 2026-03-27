@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Tailwind CSS Core Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-color: #FFF8F0;
+}
+
+body {
+  @apply font-sans text-stone-800;
+}
+
+.glass-card {
+  @apply bg-white bg-opacity-70 backdrop-blur-md border border-white border-opacity-40 shadow-soft;
+}
+
+.hover-lift {
+  @apply transition-transform duration-300 hover:-translate-y-2 hover:shadow-premium;
+}
+
+.btn-glow-red {
+  @apply relative overflow-hidden shadow-[0_0_15px_rgba(255,107,107,0.4)] hover:shadow-[0_0_25px_rgba(255,107,107,0.6)] transition-all;
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes gradient-x {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 15s ease infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}

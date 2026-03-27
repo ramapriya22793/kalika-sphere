@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalika Sphere | Premium Kids Learning</title>
+    <!-- Tailwind CSS 3.4 CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins & Sora -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Framer Motion & React CDN -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/framer-motion@11.11.1/dist/framer-motion.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        kalika: {
+                            red: "#FF6B6B",
+                            orange: "#FFB347",
+                            blue: "#6EC6FF",
+                            green: "#8EE4AF",
+                            cream: "#FFF8F0",
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'Sora', 'sans-serif'],
+                        rounded: ['Poppins', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '2xl': '1.5rem',
+                        '3xl': '2rem',
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 30px -10px rgba(0, 0, 0, 0.1)',
+                        'premium': '0 20px 50px -15px rgba(0, 0, 0, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body { @apply bg-[#FFF8F0] font-sans text-stone-800; }
+        }
+        .glass-card { @apply bg-white bg-opacity-70 backdrop-blur-md border border-white border-opacity-40 shadow-soft; }
+        .hover-lift { @apply transition-transform duration-300 hover:-translate-y-2 hover:shadow-premium; }
+        .btn-glow-red { @apply relative overflow-hidden shadow-[0_0_15px_rgba(255,107,107,0.4)] hover:shadow-[0_0_25px_rgba(255,107,107,0.6)] transition-all; }
+        .floating { animation: float 6s ease-in-out infinite; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { motion, AnimatePresence } = FramerMotion;
+
+        // Icons Helper
+        const Icon = ({ name, className }) => {
+            useEffect(() => { lucide.createIcons(); }, []);
+            return <i data-lucide={name} className={className}></i>;
+        };
+
+        const AnnouncementBar = () => (
+            <div className="bg-kalika-orange text-white py-2 px-4 text-center text-sm font-medium tracking-wide">
+                <a href="#register" className="hover:underline flex items-center justify-center gap-2">
+                    <span>Admissions Open – Join Kalika Sphere Today</span>
+                    <span className="bg-white/20 px-2 py-0.5 rounded-full text-[10px] uppercase">New</span>
+                </a>
+            </div>
+        );
+
+        const Navbar = () => {
+            const [isScrolled, setIsScrolled] = useState(false);
+            useEffect(() => {
+                const handleScroll = () => setIsScrolled(window.scrollY > 20);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            return (
+                <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'top-2 px-4' : 'top-10 px-0'}`}>
+                    <div className={`max-w-7xl mx-auto transition-all duration-300 ${isScrolled ? 'glass-card rounded-full px-6 py-3' : 'bg-transparent px-8 py-4'}`}>
+                        <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                                <div className="w-10 h-10 bg-kalika-red rounded-xl flex items-center justify-center shadow-lg">
+                                    <span className="text-white font-bold text-xl">KS</span>
+                                </div>
+                            </div>
+                            <div className="hidden md:flex items-center gap-8">
+                                <a href="#" className="flex items-center gap-2 text-stone-700 hover:text-kalika-red font-medium transition-colors group">
+                                    <Icon name="home" className="w-4 h-4" /> Home
+                                </a>
+                                <a href="#kids-lab" className="flex items-center gap-2 text-stone-700 hover:text-kalika-red font-medium transition-colors group">
+                                    <Icon name="beaker" className="w-4 h-4" /> Kids Lab
+                                </a>
+                                <a href="#pro-labs" className="flex items-center gap-2 text-stone-700 hover:text-kalika-red font-medium transition-colors group">
+                                    <Icon name="lightbulb" className="w-4 h-4" /> Pro Labs
+                                </a>
+                                <a href="#gallery" className="flex items-center gap-2 text-stone-700 hover:text-kalika-red font-medium transition-colors group">
+                                    <Icon name="image" className="w-4 h-4" /> Gallery
+                                </a>
+                            </div>
+                            <button className="bg-kalika-red text-white px-6 py-2.5 rounded-full font-semibold hover:bg-red-600 transition-all shadow-md hover:shadow-lg">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            );
+        };
+
+        const Hero = () => (
+            <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+                <div className="absolute inset-0 z-0">
+                    <img src="src/assets/hero.png" alt="Hero" className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-kalika-cream/95 via-kalika-cream/50 to-transparent"></div>
+                </div>
+                {/* Floating Elements */}
+                <motion.div animate={{ y: [0, -20, 0] }} transition={{ duration: 5, repeat: Infinity }} className="absolute top-1/4 right-1/4 w-16 h-16 bg-kalika-orange/20 rounded-2xl backdrop-blur-sm hidden lg:block" />
+                <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 4, repeat: Infinity }} className="absolute bottom-1/4 right-1/3 w-12 h-12 bg-kalika-blue/20 rounded-full backdrop-blur-sm hidden lg:block" />
+
+                <div className="max-w-7xl mx-auto px-8 relative z-10 w-full">
+                    <div className="max-w-2xl">
+                        <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+                            <h1 className="text-6xl md:text-7xl font-bold text-stone-900 leading-[1.1] mb-6">
+                                A World Where Kids <span className="text-kalika-red">Learn, Create</span> & Shine
+                            </h1>
+                            <p className="text-xl text-stone-600 mb-10 leading-relaxed max-w-lg">
+                                Hands-on workshops that build creativity, confidence, and real-world skills in a vibrant environment.
+                            </p>
+                            <div className="flex gap-4">
+                                <button className="bg-kalika-red text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl btn-glow-red">Explore Workshops</button>
+                                <button className="bg-white text-stone-800 px-8 py-4 rounded-full font-bold text-lg border border-stone-200">Enroll Now</button>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+        );
+
+        const About = () => (
+            <section className="py-24 bg-white relative overflow-hidden" id="about">
+                <div className="max-w-7xl mx-auto px-8">
+                    <div className="grid md:grid-cols-2 gap-16 items-center">
+                        <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative">
+                            <div className="aspect-square bg-kalika-cream rounded-3xl overflow-hidden relative shadow-2xl flex flex-col items-center justify-center p-12 text-center">
+                                <div className="text-8xl mb-6">🌱</div>
+                                <h3 className="text-3xl font-bold text-stone-800 mb-4">Budding Beginning</h3>
+                                <p className="text-stone-600 text-lg">Every child's curiosity is a seed waiting to grow into something magnificent.</p>
+                            </div>
+                        </motion.div>
+                        <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+                            <h4 className="text-kalika-red font-bold tracking-widest uppercase text-sm mb-4">Welcome to Kalika Sphere</h4>
+                            <h2 className="text-4xl font-bold text-stone-900 mb-8 leading-tight">Where Every Child's Unique Talents Are Discovered.</h2>
+                            <div className="space-y-6 text-lg text-stone-600 leading-relaxed">
+                                <p>Kalika Sphere is a vibrant 360° learning space where kids explore, create, and grow with confidence. Inspired by the idea of a “budding beginning,” we provide a nurturing environment where every child’s curiosity is encouraged.</p>
+                                <p>Through fun, hands-on workshops, children engage in art, movement, wellness, and skill-based activities that go beyond classroom learning.</p>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+        );
+
+        const LabCard = ({ title, subtitle, description, age, emoji, color }) => (
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="group">
+                <div className="glass-card rounded-[2.5rem] overflow-hidden hover-lift h-full flex flex-col">
+                    <div className={`h-48 flex items-center justify-center text-7xl ${color}`}>
+                        {emoji}
+                    </div>
+                    <div className="p-10 flex-grow">
+                        <div className="flex justify-between items-start mb-4">
+                            <div>
+                                <h4 className="text-kalika-red font-bold uppercase tracking-widest text-xs mb-1">{subtitle}</h4>
+                                <h3 className="text-3xl font-bold text-stone-900">{title}</h3>
+                            </div>
+                            <span className="bg-stone-100 text-stone-600 px-3 py-1 rounded-full text-xs font-bold">{age}</span>
+                        </div>
+                        <p className="text-stone-600 text-lg mb-8">{description}</p>
+                        <button className="w-full py-4 rounded-2xl font-bold text-lg transition-all border-2 border-kalika-red bg-kalika-red text-white hover:bg-transparent hover:text-kalika-red">Learn More</button>
+                    </div>
+                </div>
+            </motion.div>
+        );
+
+        const Footer = () => (
+            <footer className="bg-stone-50 py-20 px-8 border-t border-stone-200">
+                <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 bg-kalika-red rounded-lg flex items-center justify-center text-white font-bold text-sm">KS</div>
+                        <span className="text-xl font-bold text-stone-900 tracking-tight">Kalika Sphere</span>
+                    </div>
+                    <div className="flex gap-12 font-medium text-stone-500">
+                        <a href="#" className="hover:text-kalika-red">Instagram</a>
+                        <a href="#" className="hover:text-kalika-red">Facebook</a>
+                        <a href="#" className="hover:text-kalika-red">Twitter</a>
+                    </div>
+                    <p className="text-stone-400 text-sm">© 2024 Kalika Sphere. Premium Kids Learning.</p>
+                </div>
+            </footer>
+        );
+
+        const App = () => (
+            <div className="min-h-screen">
+                <AnnouncementBar />
+                <Navbar />
+                <Hero />
+                <About />
+                <section className="py-24 bg-kalika-cream/30" id="kids-lab">
+                    <div className="max-w-7xl mx-auto px-8">
+                        <h2 className="text-center text-4xl md:text-5xl font-bold text-stone-900 mb-16">Our Specialized Labs</h2>
+                        <div className="grid lg:grid-cols-2 gap-12">
+                            <LabCard title="Kids Lab" subtitle="Exploration" description="A magical space for early learners to discover science, art, and nature." age="3-6 Years" emoji="🎨" color="bg-kalika-orange/10" />
+                            <LabCard title="Pro Labs" subtitle="Innovation" description="Advanced workshops designed to build real-world skills in technology." age="7-12 Years" emoji="🚀" color="bg-kalika-blue/10" />
+                        </div>
+                    </div>
+                </section>
+                <section className="py-24 px-8">
+                    <div className="max-w-5xl mx-auto bg-gradient-to-br from-kalika-red to-[#FF8E8E] rounded-[3rem] p-16 text-center text-white shadow-2xl relative overflow-hidden">
+                        <h2 className="text-4xl md:text-6xl font-bold mb-8 relative z-10">Start Your Child's Journey</h2>
+                        <button className="bg-white text-kalika-red px-10 py-5 rounded-full font-extrabold text-xl relative z-10 hover:scale-105 transition-transform">Register Now</button>
+                    </div>
+                </section>
+                <Footer />
+            </div>
+        );
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
