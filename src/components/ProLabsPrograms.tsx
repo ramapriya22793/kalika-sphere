@@ -9,7 +9,7 @@ import gokartImg from '../assets/pro-programs/gokart.png';
 import certificationImg from '../assets/pro-programs/certification.png';
 
 interface ProLabsProgramsProps {
-  setCurrentView: (view: 'home' | 'programs' | 'pro-programs') => void;
+  setCurrentView: (view: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll') => void;
 }
 
 const programs = [

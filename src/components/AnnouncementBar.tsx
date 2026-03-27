@@ -1,4 +1,3 @@
-import React from 'react';
 const AnnouncementBar = () => {
   return (
     <div className="bg-gradient-to-r from-red-600 to-blue-600 text-white py-2 px-4 text-center text-sm font-medium tracking-wide shadow-md">

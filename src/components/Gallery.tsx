@@ -8,11 +8,10 @@ import art3 from '../assets/gallery-images/art_3.png';
 import movement1 from '../assets/gallery-images/movement_1.png';
 import movement2 from '../assets/gallery-images/movement_2.png';
 import wellness1 from '../assets/gallery-images/wellness_1.png';
-import wellness2 from '../assets/gallery-images/wellness_2.png';
 import skills1 from '../assets/gallery-images/skills_1.png';
 
 interface GalleryProps {
-  setCurrentView: (view: 'home' | 'programs' | 'pro-programs' | 'gallery') => void;
+  setCurrentView: (view: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll') => void;
 }
 
 const activities = [

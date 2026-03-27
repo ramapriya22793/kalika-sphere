@@ -1,4 +1,4 @@
-import React from 'react';
+// Precision Geometric Stencil Logo component
 
 interface KalikaLogoProps {
   className?: string;

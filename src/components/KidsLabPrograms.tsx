@@ -9,7 +9,7 @@ import gokartImg from '../assets/programs/gokart.png';
 import certificationImg from '../assets/programs/certification.png';
 
 interface KidsLabProgramsProps {
-  setCurrentView: (view: 'home' | 'programs' | 'enroll') => void;
+  setCurrentView: (view: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll') => void;
 }
 
 const programs = [
