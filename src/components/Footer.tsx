@@ -1,4 +1,4 @@
-import { Camera, Share2, PlaySquare, Heart, MapPin, Phone, Mail } from 'lucide-react';
+import { Share2, PlaySquare, Heart, MapPin, Phone, Mail } from 'lucide-react';
 import logo from '../assets/logo.png';
 import KalikaLogo from './KalikaLogo';
 

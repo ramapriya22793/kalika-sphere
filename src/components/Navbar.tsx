@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Home, Beaker, Lightbulb, Image, Mail, Menu, X, Camera } from 'lucide-react';
+import { Home, Beaker, Lightbulb, Image, Mail, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logoAsset from '../assets/logo.png';
 import KalikaLogo from './KalikaLogo';
