@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Home, Beaker, Lightbulb, Image, Mail, Menu, X } from 'lucide-react';
+import { Home, Beaker, Lightbulb, Image, Mail, Menu, X, Camera } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import logo from '../assets/logo.png';
+import logoAsset from '../assets/logo.png';
 import KalikaLogo from './KalikaLogo';
 
 interface NavbarProps {
@@ -13,6 +13,7 @@ const Navbar = ({ setCurrentView, currentView }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeItem, setActiveItem] = useState('Home');
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Sync activeItem with currentView whenever currentView changes
   useEffect(() => {
@@ -27,8 +28,17 @@ const Navbar = ({ setCurrentView, currentView }: NavbarProps) => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    handleResize();
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   const navItems: { label: string; icon: React.ReactNode; href: string }[] = [
@@ -41,7 +51,7 @@ const Navbar = ({ setCurrentView, currentView }: NavbarProps) => {
   ];
 
   return (
-    <nav className={`fixed left-0 right-0 z-50 transition-all duration-700 ease-in-out ${isScrolled ? 'top-2 px-4' : 'top-14 px-4 md:px-12'}`}>
+    <nav className={`fixed left-0 right-0 z-50 transition-all duration-700 ease-in-out ${isScrolled ? 'top-2 px-4' : 'top-[11rem] md:top-14 px-4 md:px-12'}`}>
       <div className={`max-w-7xl mx-auto transition-all duration-700 ease-in-out bg-white/60 backdrop-blur-3xl rounded-full border border-white/30 shadow-premium
         ${isScrolled ? 'px-6 py-2' : 'px-4 py-3'}`}>
         <div className="flex items-center justify-between">
@@ -49,13 +59,13 @@ const Navbar = ({ setCurrentView, currentView }: NavbarProps) => {
           {/* Logo Area (Circular icon & Stencil text) */}
           <div 
             onClick={() => { setCurrentView && setCurrentView('home'); window.scrollTo({top: 0, behavior: 'smooth'}); }}
-            className="flex items-center gap-4 cursor-pointer group"
+            className="flex items-center gap-2 md:gap-4 cursor-pointer group"
           >
             <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center flex-shrink-0">
-              <img src={logo} alt="Kalika Sphere Logo" className="w-full h-full object-contain hover:rotate-12 transition-transform duration-500" />
+              <img src={logoAsset} alt="Kalika Sphere Logo" className="w-full h-full object-contain hover:rotate-12 transition-transform duration-500" />
             </div>
-            <div className="hidden sm:block">
-              <KalikaLogo size="md" />
+            <div className="block">
+              <KalikaLogo size={isMobile ? 'sm' : 'md'} />
             </div>
           </div>
 
@@ -111,7 +121,7 @@ const Navbar = ({ setCurrentView, currentView }: NavbarProps) => {
           </div>
 
           <div className="flex items-center gap-3">
-             {/* Vibrant Red Enroll Button (Image 2 style) */}
+             {/* Vibrant Red Enroll Button (Responsive visibility) */}
              <button 
                 onClick={() => {
                   if (setCurrentView) {
@@ -141,7 +151,7 @@ const Navbar = ({ setCurrentView, currentView }: NavbarProps) => {
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="absolute top-28 left-4 right-4 bg-white/95 backdrop-blur-xl rounded-[2.5rem] p-6 shadow-2xl border border-white/50 lg:hidden"
+            className="absolute top-[15rem] left-4 right-4 bg-white/95 backdrop-blur-xl rounded-[2.5rem] p-6 shadow-2xl border border-white/50 lg:hidden"
           >
             <div className="grid grid-cols-1 gap-2">
               {navItems.map((item) => (

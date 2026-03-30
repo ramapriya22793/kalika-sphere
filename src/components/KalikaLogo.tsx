@@ -1,10 +1,10 @@
-// Precision Geometric Stencil Logo component
+// Precision Geometric Stencil Logo component (Original Stacked Design)
 
 interface KalikaLogoProps {
   className?: string;
   size?: 'sm' | 'md' | 'lg' | 'xl';
   showSubText?: boolean;
-  theme?: 'light' | 'dark'; // Add theme support
+  theme?: 'light' | 'dark';
 }
 
 const KalikaLogo = ({ 
@@ -15,20 +15,20 @@ const KalikaLogo = ({
 }: KalikaLogoProps) => {
   // Scaling factors based on size
   const scales = {
-    sm: 0.35, // Navbar (Minimalist text)
+    sm: 0.35, 
     md: 0.5,
     lg: 0.7,
-    xl: 0.55  // Footer (Subtle and sophisticated)
+    xl: 0.55
   };
 
   const colors = {
     light: {
-      kalika: "#0f172a", // Dark blue-black for light backgrounds
-      sphere: "#C21515"  // Standard red
+      kalika: "#FF0011", 
+      sphere: "#133FB0"  
     },
     dark: {
-      kalika: "#f8fafc", // Off-white for dark backgrounds
-      sphere: "#ef4444"  // Brighter red for better contrast on dark
+      kalika: "#f8fafc", 
+      sphere: "#ef4444"  
     }
   };
   
@@ -36,55 +36,54 @@ const KalikaLogo = ({
   const scale = scales[size];
   const charWidth = 40;
   const charHeight = 40;
-  const gap = 8 * scale; // Increased tracking for modern look
+  const gap = 8 * scale; 
   
-  // Final Precision Geometric Stencil Segments (Matching Close-up Image)
   const segments: { [key: string]: string[] } = {
     'K': [
-      "M2,2 V16", "M2,24 V38", // Large split in left stem
-      "M18,20 L38,4",           // Top diagonal (further offset)
-      "M18,20 L38,36"          // Bottom diagonal (further offset)
+      "M2,2 V16", "M2,24 V38", 
+      "M18,20 L38,4",           
+      "M18,20 L38,36"          
     ],
     'A': [
-      "M19,4 L14,16",   // Top-left diagonal (with apex gap)
-      "M10,24 L4,38",    // Bottom-left diagonal
-      "M21,4 L26,16",   // Top-right diagonal (with apex gap)
-      "M30,24 L36,38",   // Bottom-right diagonal
-      "M14,22 H26"       // Floating middle bar
+      "M19,4 L14,16",   
+      "M10,24 L4,38",    
+      "M21,4 L26,16",   
+      "M30,24 L36,38",   
+      "M14,22 H26"       
     ],
     'L': [
-      "M2,2 V16", "M2,24 V38", // Split left stem
-      "M10,38 H38"             // Detached floating bottom bar
+      "M2,2 V16", "M2,24 V38", 
+      "M10,38 H38"             
     ],
     'I': [
-      "M20,2 V16", "M20,24 V38" // Split center stem
+      "M20,2 V16", "M20,24 V38" 
     ],
     'S': [
-      "M38,2 H8",              // Top horizontal
-      "M2,10 V16",             // Corner top-left
-      "M10,20 H30",            // Floating middle bar
-      "M38,24 V32",            // Corner bottom-right
-      "M30,38 H2"              // Bottom horizontal
+      "M38,2 H8",              
+      "M2,10 V16",             
+      "M10,20 H30",            
+      "M38,24 V32",            
+      "M30,38 H2"              
     ],
     'P': [
-      "M2,2 V16", "M2,24 V38", // Split left stem
-      "M10,2 H34 V18 H10"      // Detached floating loop
+      "M2,2 V16", "M2,24 V38", 
+      "M10,2 H34 V18 H10"      
     ],
     'H': [
-      "M2,2 V16", "M2,24 V38", // Split left stem
-      "M38,2 V16", "M38,24 V38", // Split right stem
-      "M10,20 H30"             // Floating cross bar
+      "M2,2 V16", "M2,24 V38", 
+      "M38,2 V16", "M38,24 V38", 
+      "M10,20 H30"             
     ],
     'E': [
-      "M2,2 V16", "M2,24 V38", // Split left stem
-      "M10,2 H38",             // Top bar
-      "M10,20 H30",            // Middle bar
-      "M10,38 H38"             // Bottom bar
+      "M2,2 V16", "M2,24 V38", 
+      "M10,2 H38",             
+      "M10,20 H30",            
+      "M10,38 H38"             
     ],
     'R': [
-      "M2,2 V16", "M2,24 V38", // Split left stem
-      "M10,2 H34 V18 H10",     // Floating loop
-      "M18,22 L38,38"          // Floating kick
+      "M2,2 V16", "M2,24 V38", 
+      "M10,2 H34 V18 H10",     
+      "M18,22 L38,38"          
     ]
   };
 
@@ -117,12 +116,10 @@ const KalikaLogo = ({
         preserveAspectRatio="xMinYMin meet"
         className="w-full h-full"
       >
-        {/* KALIKA Word */}
         <g className="hover:opacity-80 transition-opacity cursor-pointer">
           {renderWord("KALIKA", currentColors.kalika, 0)}
         </g>
         
-        {/* SPHERE Word */}
         {showSubText && (
            <g className="hover:opacity-80 transition-opacity cursor-pointer" transform={`translate(2, ${charHeight + 12}) scale(0.95)`}>
              {renderWord("SPHERE", currentColors.sphere, 0)}
