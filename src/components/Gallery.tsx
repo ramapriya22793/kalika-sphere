@@ -20,11 +20,8 @@ const activities = [
   { id: 3, class: 'md:col-span-1 md:row-span-2', category: 'Wellness', title: 'Botanical Observation', image: wellness1, description: 'Detailed focus in the greenhouse finding peace in nature.', tags: ['Nature', 'Patience'] },
   { id: 4, class: 'md:col-span-1 md:row-span-1', category: 'Movement', title: 'Dance Flow', image: movement1, description: 'Developing coordination and energy through modern floor dance.', tags: ['Energy', 'Rhythm'] },
   { id: 5, class: 'md:col-span-2 md:row-span-1', category: 'Art', title: 'Pottery Studio', image: art2, description: 'Tactile learning through precision clay building, forming vessels from scratch.', tags: ['Sculpture', 'Focus'] },
-  { id: 6, class: 'md:col-span-1 md:row-span-2', category: 'Exploration', title: 'Cosmic Mechanics', image: 'https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&w=1200&q=80', description: 'Hands-on engineering as kids design and construct their own geometric space vessels.', tags: ['Engineering', 'NASA'] },
   { id: 7, class: 'md:col-span-1 md:row-span-1', category: 'Art', title: 'Detail Arts', image: art3, description: 'Miniature precision painting on natural smooth stones.', tags: ['Detail', 'Patience'] },
   { id: 8, class: 'md:col-span-2 md:row-span-1', category: 'Movement', title: 'Pro Karting', image: movement2, description: 'High-speed mechanics and track navigation for older innovators.', tags: ['Speed', 'Reflexes'] },
-  { id: 9, class: 'md:col-span-1 md:row-span-1', category: 'Exploration', title: 'Stellar View', image: 'https://images.unsplash.com/photo-1464802686167-b939a6910659?auto=format&fit=crop&w=1200&q=80', description: 'Advanced astronomical observation through high-precision modern telescopes.', tags: ['Astronomy', 'Focus'] },
-  { id: 10, class: 'md:col-span-1 md:row-span-1', category: 'Exploration', title: 'Holo-System', image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80', description: 'Interacting with our solar system through cutting-edge 3D holographic technology.', tags: ['Tech', 'Discovery'] },
 ];
 
 const categories = ['All', 'Art', 'Movement', 'Wellness', 'Skills', 'Exploration'];

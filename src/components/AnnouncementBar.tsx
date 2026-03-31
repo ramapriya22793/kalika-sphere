@@ -8,7 +8,7 @@ const AnnouncementBar = () => {
       >
         <span className="font-bold uppercase tracking-wider text-green-300">New Summer Camp</span>
         <span className="hidden md:inline text-white/50">•</span>
-        <span>29 APR 2026 - 02 MAY 2026 (06 DAYS)</span>
+        <span>27 APR 2026 - 02 MAY 2026 (06 DAYS)</span>
         <span className="hidden md:inline text-white/50">•</span>
         <span className="flex items-center gap-2">
            <span className="line-through text-white/60">₹12,000/-</span> 
