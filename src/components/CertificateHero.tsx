@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Star, ShieldCheck, GraduationCap } from 'lucide-react';
 import KalikaLogo from './KalikaLogo';

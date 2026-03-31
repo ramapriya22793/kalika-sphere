@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Star, Heart, CheckCircle2, ChevronDown, ChevronUp, Rocket, Zap, Wrench, Leaf, Plane, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Star, Heart, CheckCircle2, ChevronDown, ChevronUp, Zap, Wrench, Leaf, Plane, ShieldCheck } from 'lucide-react';
 import potteryImg from '../assets/programs/pottery.png';
 import pebblezappImg from '../assets/programs/pebblezapp.png';
 import aeronauticImg from '../assets/programs/aeronautic.png';
