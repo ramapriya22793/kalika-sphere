@@ -22,7 +22,6 @@ function App() {
       <Navbar 
         setCurrentView={setCurrentView} 
         currentView={currentView} 
-        setWorkshopOpenId={setWorkshopOpenId}
       />
       <SummerFloatingTab setCurrentView={setCurrentView} currentView={currentView} />
       

@@ -4,9 +4,6 @@ import {
   X, 
   ArrowLeft, 
   Sparkles, 
-  Trophy, 
-  Clock,
-  Users,
   ChevronRight,
   Star,
   Target

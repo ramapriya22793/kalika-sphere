@@ -1,23 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Home, Beaker, Lightbulb, Image, Mail, Menu, X, ChevronDown, Sun } from 'lucide-react';
+import { Home, Beaker, Lightbulb, Image, Mail, Menu, X, Sun } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logoAsset from '../assets/logo.png';
 import KalikaLogo from './KalikaLogo';
-import { programs } from './KidsLabPrograms';
 
 interface NavbarProps {
   setCurrentView?: (view: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll' | 'summer-workshop') => void;
   currentView?: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll' | 'summer-workshop';
-  setWorkshopOpenId?: (id: string | null) => void;
 }
 
-const Navbar = ({ setCurrentView, currentView, setWorkshopOpenId }: NavbarProps) => {
+const Navbar = ({ setCurrentView, currentView }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeItem, setActiveItem] = useState('Home');
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  const workshopActivities = programs.filter(p => p.id !== 'certification');
+
 
   // Sync activeItem with currentView whenever currentView changes
   useEffect(() => {
