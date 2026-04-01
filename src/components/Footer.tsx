@@ -81,7 +81,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <p className="text-sm font-bold text-stone-400 uppercase tracking-widest mb-1">Location</p>
-                  <p className="text-lg font-display font-medium text-stone-800 leading-tight">No. 11, Saraswathi Avenue, Achipetti, Pollachi, Coimbatore</p>
+                  <p className="text-lg font-display font-medium text-stone-800 leading-tight">No. 11, Saraswathi Avenue, Achipatti, Pollachi, Coimbatore</p>
                 </div>
               </div>
               

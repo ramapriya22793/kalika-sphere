@@ -3,7 +3,7 @@ import kidsLabImg from '../assets/kids-lab.png';
 import proLabsImg from '../assets/pro-labs.png';
 
 interface LabsSectionProps {
-  setCurrentView?: (view: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll') => void;
+  setCurrentView?: (view: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll' | 'summer-workshop') => void;
 }
 
 const LabsSection = ({ setCurrentView }: LabsSectionProps) => {

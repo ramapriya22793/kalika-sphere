@@ -9,14 +9,22 @@ import ProLabsPrograms from './components/ProLabsPrograms';
 import Gallery from './components/Gallery';
 import Footer from './components/Footer';
 import EnrollmentForm from './components/EnrollmentForm';
+import SummerWorkshop from './components/SummerWorkshop';
+import SummerFloatingTab from './components/SummerFloatingTab';
 
 function App() {
-  const [currentView, setCurrentView] = useState<'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll' | 'summer-workshop'>('home');
+  const [workshopOpenId, setWorkshopOpenId] = useState<string | null>(null);
 
   return (
     <div className="min-h-screen bg-kalika-cream font-sans selection:bg-kalika-red selection:text-white">
-      <AnnouncementBar />
-      <Navbar setCurrentView={setCurrentView} currentView={currentView} />
+      <AnnouncementBar setCurrentView={setCurrentView} />
+      <Navbar 
+        setCurrentView={setCurrentView} 
+        currentView={currentView} 
+        setWorkshopOpenId={setWorkshopOpenId}
+      />
+      <SummerFloatingTab setCurrentView={setCurrentView} currentView={currentView} />
       
       {currentView === 'home' ? (
         <main>
@@ -28,6 +36,12 @@ function App() {
             <LabsSection setCurrentView={setCurrentView} />
           </div>
         </main>
+      ) : currentView === 'summer-workshop' ? (
+        <SummerWorkshop 
+          setCurrentView={setCurrentView} 
+          openId={workshopOpenId}
+          setOpenId={setWorkshopOpenId}
+        />
       ) : currentView === 'programs' ? (
         <KidsLabPrograms setCurrentView={setCurrentView} />
       ) : currentView === 'pro-programs' ? (

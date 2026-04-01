@@ -4,7 +4,7 @@ import { ArrowLeft, CreditCard, Smartphone, CheckCircle2, Wallet, ShieldCheck } 
 import { supabase } from '../supabaseClient';
 
 interface EnrollmentFormProps {
-  setCurrentView?: (view: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll') => void;
+  setCurrentView?: (view: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll' | 'summer-workshop') => void;
 }
 
 const InputField = ({ label, type = "text", placeholder, required = false, name, value, onChange }: any) => (

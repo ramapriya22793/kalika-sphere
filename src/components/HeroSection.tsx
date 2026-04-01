@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import heroImg from '../assets/hero.png';
 
 interface HeroSectionProps {
-  setCurrentView?: (view: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll') => void;
+  setCurrentView?: (view: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll' | 'summer-workshop') => void;
 }
 
 const HeroSection = ({ setCurrentView }: HeroSectionProps) => {
@@ -44,9 +44,9 @@ const HeroSection = ({ setCurrentView }: HeroSectionProps) => {
           {/* 🔴 Explore Labs */}
           <motion.button
             onClick={() => {
-              const target = document.querySelector('#kids-lab');
-              if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
+              if (setCurrentView) {
+                setCurrentView('summer-workshop');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
               }
             }}
             initial={{ opacity: 0, y: 40 }}
@@ -57,7 +57,7 @@ const HeroSection = ({ setCurrentView }: HeroSectionProps) => {
                        hover:bg-red-700 hover:border-red-700
                        transition-all duration-300 shadow-xl active:scale-95"
           >
-            Explore Labs
+            Summer Camp 2026
           </motion.button>
 
           {/* 🔵 Start Your Journey (Solid Blue) */}

@@ -10,10 +10,10 @@ import gokartImg from '../assets/pro-programs/gokart.png';
 import certificationImg from '../assets/pro-programs/certification.png';
 
 interface ProLabsProgramsProps {
-  setCurrentView: (view: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll') => void;
+  setCurrentView: (view: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll' | 'summer-workshop') => void;
 }
 
-interface SyllabusItem {
+export interface SyllabusItem {
   title?: string;
   concepts?: string[];
   activities?: string[];
@@ -21,12 +21,12 @@ interface SyllabusItem {
   customContent?: string[];
 }
 
-interface SyllabusSection {
+export interface SyllabusSection {
   module: string;
   items: SyllabusItem[];
 }
 
-interface Program {
+export interface Program {
   id: string;
   title: string;
   age: string;
@@ -38,128 +38,73 @@ interface Program {
   syllabus?: SyllabusSection[];
 }
 
-const programs: Program[] = [
-  {
-    id: 'ai-coding',
-    title: 'Artificial Intelligence',
-    age: '11-14 Years',
-    duration: '8-Week Masterclass',
-    features: ['Python Basics', 'Machine Learning Concepts', 'Robot Building'],
-    description: 'Step into the future! Older students will learn the fundamentals of coding by programming their own functional AI robots, understanding how technology shapes our world.',
-    image: aiImg,
-    icon: <Code className="w-5 h-5" />,
-    syllabus: [
-      {
-        module: 'Technical Curriculum',
-        items: [
-          {
-            title: 'Syllabus Update',
-            concepts: ['The detailed session-by-session syllabus for this track will be shared with enrolled students at the start of the program.'],
-            outcome: 'Stay tuned for the full technical roadmap.'
-          }
-        ]
-      }
-    ]
-  },
+export const programs: Program[] = [
   {
     id: 'space-astronomy',
     title: 'Astronomics',
     age: '11-14 Years',
-    duration: '6-Week Series',
+    duration: '1-Day Workshop',
     features: ['Astrophysics', 'Telescope Mechanics', 'Mission Planning'],
     description: 'An immersive journey through the cosmos. Students study real star maps, build incredibly detailed solar system models, and learn the physics behind rocket launches.',
     image: spaceImg,
     icon: <Rocket className="w-5 h-5" />,
     syllabus: [
       {
-        module: 'Session 1: Big Bang Theory (Including Hydrogen Atom)',
-        items: [
-          {
-            title: 'Big Bang Theory',
-            concepts: ['Origin of the universe', 'Expansion from a hot dense state', 'Formation of elementary particles', 'Formation of protons, neutrons, electrons', 'Formation of the first hydrogen atoms', 'Importance of hydrogen in stars and the universe'],
-            activities: ['Timeline chart of the early universe', 'Students place events in sequence']
-          },
-          {
-            title: 'Hubble Law',
-            concepts: ['Galaxies are moving away from us', 'The farther the galaxy, the faster it recedes', 'Hubble’s Law: v = H₀d', 'Introduction to redshift'],
-            activities: ['Balloon expansion model with measured distances', 'Discuss relationship between distance and recession'],
-            outcome: 'Students understand how Hubble’s observation supports the expanding universe model.'
-          }
-        ]
-      },
-      {
-        module: 'Session 2: CMB Radiation',
-        items: [
-          {
-            title: 'CMB Radiation',
-            concepts: ['Cosmic Microwave Background as leftover radiation from early universe', 'Recombination era', 'Why CMB is important evidence for the Big Bang', 'Uniformity and tiny temperature fluctuations'],
-            activities: ['Show CMB map images', 'Identify hot and cold regions']
-          },
-          {
-            title: 'Basic Physics for Satellite and Rocket Dynamics',
-            concepts: ['Force: A push or pull on an object; changes motion', 'Mass: Amount of matter in an object; does not change with location', 'Weight: Force due to gravity acting on mass (W = mg)', 'Gravity: Attractive force between two masses; Earth’s gravity pulls everything toward its center']
-          },
-          {
-            title: 'Newton’s Laws of Motion in Rocket Science',
-            customContent: [
-              'Newton’s First Law (Law of Inertia): An object remains at rest or in uniform motion unless acted upon by an external force.',
-              'Rocket Connection: A rocket on the launch pad stays still until thrust is produced; a satellite in space keeps moving due to little friction.',
-              'Newton’s Second Law: Force = mass × acceleration (F = ma)',
-              'Rocket Connection: More force gives more acceleration; heavier rockets need more force to lift off.',
-              'Newton’s Third Law: For every action, there is an equal and opposite reaction.',
-              'Rocket Connection: Hot gases are pushed downward, rocket moves upward. Rockets work by pushing exhaust gases backward.'
-            ]
-          },
-          {
-            title: 'Introduction to Satellites',
-            concepts: ['Definition of satellites (natural and artificial)', 'Applications: communication, weather forecasting, remote sensing, GPS, scientific research', 'Basic parts/subsystems: structure, power, communication, payload, onboard computer, attitude control'],
-            activities: ['Label a satellite diagram', 'Match subsystem to function'],
-            outcome: 'Students understand the purpose and basic engineering of satellites.'
-          }
-        ]
-      },
-      {
-        module: 'Session 3: Aerospace (CORE)',
-        items: [
-          {
-            title: 'Rocket Dynamics and Newton’s Laws',
-            concepts: ['Why rockets are needed', 'Newton’s 1st, 2nd, and 3rd laws', 'Thrust and action-reaction', 'Mass, acceleration, and fuel', 'Multi-stage rockets (basic idea)', 'Structure of a rocket', 'Types of propulsion System'],
-            activities: ['Balloon rocket', 'Water rocket launch', 'Force and motion discussion'],
-            outcome: 'Students understand how rocket motion is explained by Newton’s laws.'
-          },
-          {
-            title: 'Types of Orbits and Their Specifications',
-            concepts: ['What is an orbit? Circular vs elliptical orbit', 'Key orbit types: LEO (Low Earth Orbit), MEO, GEO, Polar Orbit, Sun-Synchronous Orbit', 'Specifications: altitude, period, inclination, applications'],
-            customContent: ['Forces on a Rocket:', '1. Thrust – upward', '2. Weight – downward', '3. Drag – air resistance', '4. Lift – usually less important for rockets', 'If thrust < weight → rocket does not rise', 'If thrust > weight → rocket lifts off'],
-            activities: ['Orbit comparison chart', 'Students identify best orbit for different missions'],
-            outcome: 'Students understand how orbit choice depends on mission purpose.'
-          },
-          {
-            title: 'Electromagnetic Spectrum',
-            concepts: ['Nature of electromagnetic waves', 'Relationship between wavelength and frequency', 'Main regions: radio waves, microwaves, infrared, visible light, ultraviolet, X-rays, gamma rays', 'Applications in: astronomy, satellite communication, imaging, remote sensing'],
-            activities: ['Spectrum chart worksheet', 'Visible light demo with prism', 'Remote control IR demo if available']
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: 'gokart-racing',
-    title: 'Go-kart Experience',
-    age: '11-14 Years',
-    duration: 'Ongoing Seasonal',
-    features: ['Mechanical Physics', 'Track Racing', 'Vehicle Maintenance'],
-    description: 'Go beyond just driving. Students will learn the mechanics of how their karts work, perform basic pit-stop maintenance, and race on our advanced track.',
-    image: gokartImg,
-    icon: <Wrench className="w-5 h-5" />,
-    syllabus: [
-      {
         module: 'Technical Curriculum',
         items: [
           {
             title: 'Syllabus Update',
             concepts: ['The detailed session-by-session syllabus for this track will be shared with enrolled students at the start of the program.'],
             outcome: 'Stay tuned for the full technical roadmap.'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'pebblezapp',
+    title: 'Arts & Craft',
+    age: '11-14 Years',
+    duration: '1-Day Workshop',
+    features: ['Fine Brush Techniques', 'Color Theory', 'Portfolio Building'],
+    description: 'An advanced studio art class where students use fine-tipped brushes to paint incredibly intricate, detailed masterpieces on natural stone canvases.',
+    image: pebblezappImg,
+    icon: <Wrench className="w-5 h-5 opacity-0" />,
+    syllabus: [
+      {
+        module: 'I. Clay Preparation & Basics',
+        items: [
+          {
+            concepts: ['Introduction to natural terracotta clay', 'Professional clay preparation & kneading techniques'],
+            activities: ['Preparing the clay for advanced work'],
+            outcome: 'Students master the preparatory phase of ceramic art.'
+          }
+        ]
+      },
+      {
+        module: 'II. Main Techniques & Product Making',
+        items: [
+          {
+            title: 'Product Making: Textured Planter',
+            concepts: ['Wheel throwing basics vs hand-building', 'Slab and coil basics'],
+            activities: ['Creating a large planter with intricate textures'],
+            outcome: 'Mastering form and structural integrity in large pieces.'
+          },
+          {
+            title: 'Sculpture Making',
+            concepts: ['Advanced sculpting and anatomy basics'],
+            activities: ['Designing and modeling a complex sculpture piece'],
+            outcome: 'Developing creative expression through 3D form.'
+          }
+        ]
+      },
+      {
+        module: 'III. Surface Designing & Finishing',
+        items: [
+          {
+            concepts: ['Glaze chemistry basics', 'Advanced surface designing', 'Firing finishing (1 fired piece giveaway)'],
+            activities: ['Detailed surface detailing and cleaning'],
+            outcome: 'Students take home a professional-grade, fired ceramic piece.'
           }
         ]
       }
@@ -169,7 +114,7 @@ const programs: Program[] = [
     id: 'electrical-plumbing',
     title: 'Electrical & Plumbing',
     age: '11-14 Years',
-    duration: '5-Week Intensive',
+    duration: '1-Day Workshop',
     features: ['Advanced Soldering', 'Complex PVC Systems', 'Logic Gates'],
     description: 'A deep dive into how the modern world works. Students will safely build advanced electrical circuits and engineer complex water-flow systems from scratch.',
     image: electricalImg,
@@ -188,10 +133,32 @@ const programs: Program[] = [
     ]
   },
   {
+    id: 'ai-coding',
+    title: 'Artificial Intelligence',
+    age: '11-14 Years',
+    duration: '1-Day Workshop',
+    features: ['Python Basics', 'Machine Learning Concepts', 'Robot Building'],
+    description: 'Step into the future! Older students will learn the fundamentals of coding by programming their own functional AI robots, understanding how technology shapes our world.',
+    image: aiImg,
+    icon: <Code className="w-5 h-5" />,
+    syllabus: [
+      {
+        module: 'Technical Curriculum',
+        items: [
+          {
+            title: 'Syllabus Update',
+            concepts: ['The detailed session-by-session syllabus for this track will be shared with enrolled students at the start of the program.'],
+            outcome: 'Stay tuned for the full technical roadmap.'
+          }
+        ]
+      }
+    ]
+  },
+  {
     id: 'pottery',
     title: 'Pottery',
     age: '11-14 Years',
-    duration: '6-Week Program',
+    duration: '1-Day Workshop',
     features: ['Wheel Throwing', 'Glaze Chemistry', 'Advanced Sculpting'],
     description: 'Take artistry to the next level. Students master the pottery wheel, learning precise movements to create professional-grade, beautiful clay vessels.',
     image: potteryImg,
@@ -210,20 +177,20 @@ const programs: Program[] = [
     ]
   },
   {
-    id: 'pebblezapp',
-    title: 'Arts & Craft',
+    id: 'gokart-racing',
+    title: 'Go-kart Experience',
     age: '11-14 Years',
-    duration: '4-Week Studio',
-    features: ['Fine Brush Techniques', 'Color Theory', 'Portfolio Building'],
-    description: 'An advanced studio art class where students use fine-tipped brushes to paint incredibly intricate, detailed masterpieces on natural stone canvases.',
-    image: pebblezappImg,
-    icon: <Wrench className="w-5 h-5 opacity-0" />,
+    duration: '1-Day Workshop',
+    features: ['Mechanical Physics', 'Track Racing', 'Vehicle Maintenance'],
+    description: 'Go beyond just driving. Students will learn the mechanics of how their karts work, perform basic pit-stop maintenance, and race on our advanced track.',
+    image: gokartImg,
+    icon: <Wrench className="w-5 h-5" />,
     syllabus: [
       {
         module: 'Technical Curriculum',
         items: [
           {
-            title: 'Coming Soon',
+            title: 'Syllabus Update',
             concepts: ['The detailed session-by-session syllabus for this track will be shared with enrolled students at the start of the program.'],
             outcome: 'Stay tuned for the full technical roadmap.'
           }
@@ -267,7 +234,7 @@ const ProLabsPrograms = ({ setCurrentView }: ProLabsProgramsProps) => {
             <Cpu className="w-4 h-4" />
           </div>
           <h1 className="text-4xl md:text-5xl font-display text-stone-900 mb-2 leading-tight">
-            Pro Lab <br/>
+            Pro Lab (Intermediate) <br/>
             <span className="italic font-light text-kalika-red">Advanced Tracks.</span>
           </h1>
         </div>

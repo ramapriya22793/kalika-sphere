@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { Home, Beaker, Lightbulb, Image, Mail, Menu, X } from 'lucide-react';
+import { Home, Beaker, Lightbulb, Image, Mail, Menu, X, ChevronDown, Sun } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logoAsset from '../assets/logo.png';
 import KalikaLogo from './KalikaLogo';
+import { programs } from './KidsLabPrograms';
 
 interface NavbarProps {
-  setCurrentView?: (view: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll') => void;
-  currentView?: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll';
+  setCurrentView?: (view: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll' | 'summer-workshop') => void;
+  currentView?: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll' | 'summer-workshop';
+  setWorkshopOpenId?: (id: string | null) => void;
 }
 
-const Navbar = ({ setCurrentView, currentView }: NavbarProps) => {
+const Navbar = ({ setCurrentView, currentView, setWorkshopOpenId }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeItem, setActiveItem] = useState('Home');
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+
+  const workshopActivities = programs.filter(p => p.id !== 'certification');
 
   // Sync activeItem with currentView whenever currentView changes
   useEffect(() => {
@@ -22,6 +26,7 @@ const Navbar = ({ setCurrentView, currentView }: NavbarProps) => {
     else if (currentView === 'pro-programs') setActiveItem('Pro Lab');
     else if (currentView === 'gallery') setActiveItem('Gallery');
     else if (currentView === 'enroll') setActiveItem('Enroll Now');
+    else if (currentView === 'summer-workshop') setActiveItem('Summer Camp');
   }, [currentView]);
 
   useEffect(() => {
@@ -47,6 +52,7 @@ const Navbar = ({ setCurrentView, currentView }: NavbarProps) => {
     { label: 'Kids Lab', icon: <Beaker className="w-4 h-4" />, href: '#kids-lab' },
     { label: 'Pro Lab', icon: <Lightbulb className="w-4 h-4" />, href: '#pro-labs' },
     { label: 'Gallery', icon: <Image className="w-4 h-4" />, href: '#gallery' },
+    { label: 'Summer Camp', icon: <Sun className="w-4 h-4" />, href: '#summer-camp' },
     { label: 'Contact', icon: <Mail className="w-4 h-4" />, href: '#contact' },
   ];
 
@@ -90,6 +96,10 @@ const Navbar = ({ setCurrentView, currentView }: NavbarProps) => {
                       e.preventDefault();
                       setCurrentView('gallery');
                       window.scrollTo({ top: 0 });
+                    } else if (item.label === 'Summer Camp') {
+                      e.preventDefault();
+                      setCurrentView('summer-workshop');
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
                     } else {
                       if (item.href === '#') {
                         e.preventDefault();
@@ -106,10 +116,10 @@ const Navbar = ({ setCurrentView, currentView }: NavbarProps) => {
                     }
                   }
                 }}
-                className={`flex items-center gap-2.5 px-5 py-2.5 rounded-full text-[0.92rem] font-bold tracking-tight transition-all duration-300
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-[0.88rem] font-bold tracking-tight transition-all duration-300 transform whitespace-nowrap
                   ${activeItem === item.label
-                    ? 'text-white bg-red-600 shadow-lg shadow-red-600/20'
-                    : 'text-stone-800 hover:text-stone-900 hover:bg-white/50'
+                    ? 'text-white bg-red-600 shadow-lg shadow-red-600/20 active:scale-95'
+                    : 'text-stone-800 hover:text-red-600 hover:bg-white/50 active:scale-95'
                   }`}
               >
                 <span className={`${activeItem === item.label ? 'text-white' : 'text-stone-400'}`}>
@@ -171,6 +181,9 @@ const Navbar = ({ setCurrentView, currentView }: NavbarProps) => {
                       } else if (item.label === 'Gallery') {
                         e.preventDefault();
                         setCurrentView('gallery');
+                      } else if (item.label === 'Summer Camp') {
+                        e.preventDefault();
+                        setCurrentView('summer-workshop');
                       } else {
                         if (item.href === '#') {
                           e.preventDefault();

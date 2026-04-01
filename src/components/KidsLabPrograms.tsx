@@ -10,22 +10,22 @@ import gokartImg from '../assets/programs/gokart.png';
 import certificationImg from '../assets/programs/certification.png';
 
 interface KidsLabProgramsProps {
-  setCurrentView: (view: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll') => void;
+  setCurrentView: (view: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll' | 'summer-workshop') => void;
 }
 
-interface SyllabusItem {
+export interface SyllabusItem {
   title?: string;
   concepts?: string[];
   activities?: string[];
   outcome?: string;
 }
 
-interface SyllabusSection {
+export interface SyllabusSection {
   module: string;
   items: SyllabusItem[];
 }
 
-interface Program {
+export interface Program {
   id: string;
   title: string;
   age: string;
@@ -37,24 +37,53 @@ interface Program {
   syllabus?: SyllabusSection[];
 }
 
-const programs: Program[] = [
+export const programs: Program[] = [
   {
-    id: 'pottery',
-    title: 'Pottery Experience',
+    id: 'aeronautic',
+    title: 'Astronomics',
     age: '5-11 Years',
-    duration: '4-Week Intro',
-    features: ['Clay Basics', 'Hand-Modeling', 'Safe Tools'],
-    description: 'A tactile journey into the world of clay! Young makers will discover the joy of molding, shaping, and painting their own unique pottery pieces while developing fine motor skills.',
-    image: potteryImg,
-    icon: <Star className="w-5 h-5" />,
+    duration: '1-Day Workshop',
+    features: ['Paper Plane Physics', 'Drone Basics', 'Wing Design'],
+    description: 'Explore the science of flight! From folding advanced paper gliders to understanding how real wings generate lift, young pilots will take their first steps into aerospace.',
+    image: aeronauticImg,
+    icon: <Plane className="w-5 h-5" />,
     syllabus: [
       {
-        module: 'Technical Curriculum',
+        module: 'Session 1: Intro to Space & Big Bang (Level 1)',
         items: [
           {
-            title: 'Coming Soon',
-            concepts: ['The detailed session-by-session syllabus for this track will be shared with enrolled students at the start of the program.'],
-            outcome: 'Stay tuned for the full creative roadmap.'
+            title: 'Universe Discovery',
+            concepts: ['What is space & the universe?', 'Earth, Moon, Sun & stars'],
+            activities: ['Intro discussion of the sky', 'Showing pictures of planets & astronauts'],
+            outcome: 'Students understand that space is vast and contains galaxies.'
+          }
+        ]
+      },
+      {
+        module: 'Session 2: Astronomy & Galaxies (Level 1)',
+        items: [
+          {
+            title: 'Planetary Studies',
+            concepts: ['Difference between Planets, Stars, Comets & Meteorites'],
+            activities: ['Space object sorting cards'],
+            outcome: 'Students can identify and differentiate basic space objects.'
+          }
+        ]
+      },
+      {
+        module: 'Session 3: Advanced Track (Level 2)',
+        items: [
+          {
+            title: 'Big Bang & Hubble Law',
+            concepts: ['Evolution of the universe from a hot dense state', 'Formation of protons & electrons', "Hubble's Law: v = H₀d (Redshift intro)"],
+            activities: ['Expanding Universe Balloon Demo (measured distances)', 'Timeline chart of early universe'],
+            outcome: 'Grasping advanced evidence for the expanding universe model.'
+          },
+          {
+            title: 'Satellite & Rocket Dynamics',
+            concepts: ["Newton's 1st, 2nd, and 3rd laws in space", 'Orbit types: LEO, MEO, GEO', 'Satellite subsystems: power, comms, attitude control'],
+            activities: ['Water rocket launch', 'Labelling satellite diagrams & subsystems'],
+            outcome: 'Understanding the engineering behind communication and research satellites.'
           }
         ]
       }
@@ -64,63 +93,40 @@ const programs: Program[] = [
     id: 'pebblezapp',
     title: 'Arts & Craft',
     age: '5-11 Years',
-    duration: '6-Week Series',
+    duration: '1-Day Workshop',
     features: ['Stone Painting', 'Color Mixing', 'Nature Crafts'],
     description: 'Transforming natural elements into mini-masterpieces. Students learn to use delicate brushes to paint intricate patterns and characters on smooth river stones.',
     image: pebblezappImg,
     icon: <Heart className="w-5 h-5" />,
     syllabus: [
       {
-        module: 'Technical Curriculum',
+        module: 'I. Nature & Textures',
         items: [
           {
-            title: 'Coming Soon',
-            concepts: ['The detailed session-by-session syllabus for this track will be shared with enrolled students at the start of the program.'],
-            outcome: 'Stay tuned for the full creative roadmap.'
+            concepts: ['Exploring natural elements for art', 'Introduction to fine-line brush techniques'],
+            activities: ['Stone surface preparation and base coating'],
+            outcome: 'Understanding how to work with natural palettes.'
           }
         ]
-      }
-    ]
-  },
-  {
-    id: 'aeronautic',
-    title: 'Aeronautics',
-    age: '5-11 Years',
-    duration: '5-Week Mission',
-    features: ['Paper Plane Physics', 'Drone Basics', 'Wing Design'],
-    description: 'Explore the science of flight! From folding advanced paper gliders to understanding how real wings generate lift, young pilots will take their first steps into aerospace.',
-    image: aeronauticImg,
-    icon: <Plane className="w-5 h-5" />,
-    syllabus: [
+      },
       {
-        module: 'Technical Curriculum',
+        module: 'II. Color Harmony & Character Design',
         items: [
           {
-            title: 'Coming Soon',
-            concepts: ['The detailed session-by-session syllabus for this track will be shared with enrolled students at the start of the program.'],
-            outcome: 'Stay tuned for the flight roadmap.'
+            title: 'Character Painting',
+            concepts: ['Basic color theory for kids', 'Creating 3D effects on flat surfaces'],
+            activities: ['Painting intricate patterns and characters on river stones'],
+            outcome: 'Mastering small-scale detail and color blending.'
           }
         ]
-      }
-    ]
-  },
-  {
-    id: 'microgreen',
-    title: 'Microgreens',
-    age: '5-11 Years',
-    duration: '4-Week Growth',
-    features: ['Seed Science', 'Urban Farming', 'Nutritional Value'],
-    description: 'Miniature farms with massive impacts. Students learn the biology of seeds and how to grow nutrient-dense greens in small spaces using eco-friendly methods.',
-    image: microgreenImg,
-    icon: <Leaf className="w-5 h-5" />,
-    syllabus: [
+      },
       {
-        module: 'Technical Curriculum',
+        module: 'III. Portfolio & Showcase',
         items: [
           {
-            title: 'Coming Soon',
-            concepts: ['The detailed session-by-session syllabus for this track will be shared with enrolled students at the start of the program.'],
-            outcome: 'Stay tuned for the botanical roadmap.'
+            concepts: ['Curation and storytelling through art'],
+            activities: ['Setting up a mini stone-art gallery'],
+            outcome: 'Building confidence in presenting creative work.'
           }
         ]
       }
@@ -128,21 +134,133 @@ const programs: Program[] = [
   },
   {
     id: 'electrical',
-    title: 'Junior Electrical',
+    title: 'Electrical & Plumbing',
     age: '5-11 Years',
-    duration: '6-Week Circuits',
+    duration: '1-Day Workshop',
     features: ['Battery Power', 'Safe LEDs', 'Snap Circuits'],
     description: 'Light up the world! A safe introduction to electricity where students build simple circuits, light up LEDs, and understand the power that runs our homes.',
     image: electricalImg,
     icon: <Zap className="w-5 h-5" />,
     syllabus: [
       {
-        module: 'Technical Curriculum',
+        module: 'I. Circuit Basics',
         items: [
           {
-            title: 'Coming Soon',
-            concepts: ['The detailed session-by-session syllabus for this track will be shared with enrolled students at the start of the program.'],
-            outcome: 'Stay tuned for the power roadmap.'
+            concepts: ['Understanding power sources, paths, and loads', 'Electrical safety for kids'],
+            activities: ['Building a simple circuit with batteries and LEDs'],
+            outcome: 'Students can identify the parts of a basic electrical system.'
+          }
+        ]
+      },
+      {
+        module: 'II. Material Exploration',
+        items: [
+          {
+            title: 'Conductors vs Insulators',
+            concepts: ['Which materials complete a circuit?', 'Copper tape vs wire'],
+            activities: ['Hands-on testing with everyday objects'],
+            outcome: 'Grasping how electricity travels through different mediums.'
+          }
+        ]
+      },
+      {
+        module: 'III. Creative Inventions',
+        items: [
+          {
+            title: 'Light-up Art',
+            concepts: ['Integrating tech into creativity', 'Intro to switches'],
+            activities: ['Creating light-up flowers or paper bugs'],
+            outcome: 'Experience designing functional electronic prototypes.'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'microgreen',
+    title: 'Micro-greens',
+    age: '5-11 Years',
+    duration: '1-Day Workshop',
+    features: ['Seed Science', 'Urban Farming', 'Nutritional Value'],
+    description: 'Miniature farms with massive impacts. Students learn the biology of seeds and how to grow nutrient-dense greens in small spaces using eco-friendly methods.',
+    image: microgreenImg,
+    icon: <Leaf className="w-5 h-5" />,
+    syllabus: [
+      {
+        module: 'I. Seed Science & Germination',
+        items: [
+          {
+            concepts: ['Biology of seeds', 'Conditions for healthy growth (light, water, soil)'],
+            activities: ['Identifying different seed varieties (pea, radish, broccoli)'],
+            outcome: 'Grasping the basic biology of urban farming.'
+          }
+        ]
+      },
+      {
+        module: 'II. Setting the Mini-Farm',
+        items: [
+          {
+            title: 'Sowing Techniques',
+            concepts: ['Trays, soil types, and spacing', 'Sustainable food systems'],
+            activities: ['Planting your own microgreen tray to take home'],
+            outcome: 'Practical knowledge of setting up an indoor garden.'
+          }
+        ]
+      },
+      {
+        module: 'III. Harvest & Nutrition',
+        items: [
+          {
+            concepts: ['Nutritional benefits of microgreens', 'Farm-to-table concepts'],
+            activities: ['Observation journals and harvest demonstration'],
+            outcome: 'Understanding responsibility and the joy of healthy eating.'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'pottery',
+    title: 'Pottery',
+    age: '5-11 Years',
+    duration: '1-Day Workshop',
+    features: ['Clay Basics', 'Hand-Modeling', 'Safe Tools'],
+    description: 'A tactile journey into the world of clay! Young makers will discover the joy of molding, shaping, and painting their own unique pottery pieces while developing fine motor skills.',
+    image: potteryImg,
+    icon: <Star className="w-5 h-5" />,
+    syllabus: [
+      {
+        module: 'I. Introduction & Clay Basics',
+        items: [
+          {
+            concepts: ['Understanding natural terracotta clay', 'Clay preparation basics'],
+            activities: ['Handling and kneading raw clay'],
+            outcome: 'Students understand the properties of eco-friendly terracotta.'
+          }
+        ]
+      },
+      {
+        module: 'II. Main Techniques & Product Making',
+        items: [
+          {
+            title: 'Pinch Pot Method',
+            activities: ['Creating a mini animal or bird planter'],
+            outcome: 'Students master the fundamental pinch pot technique.'
+          },
+          {
+            title: 'Bird Sculpture',
+            activities: ['Hand-modeling a small bird figure'],
+            outcome: 'Developing 3D sculpting and fine motor skills.'
+          }
+        ]
+      },
+      {
+        module: 'III. Decoration & Finishing',
+        items: [
+          {
+            concepts: ['Surface texture and detailing', 'Firing basics (1 fired piece giveaway)'],
+            activities: ['Adding textures and cleaning edges'],
+            outcome: 'Students take home a finished, creative pottery piece.'
           }
         ]
       }
@@ -150,21 +268,42 @@ const programs: Program[] = [
   },
   {
     id: 'gokart',
-    title: 'Karting Basics',
+    title: 'Go-kart Experience',
     age: '5-11 Years',
-    duration: 'Ongoing Seasonal',
+    duration: '1-Day Workshop',
     features: ['Track Safety', 'Steering Logic', 'Flag Meanings'],
     description: 'Start your engines! Young drivers learn the fundamental safety and handling skills needed to navigate the track with confidence and skill.',
     image: gokartImg,
     icon: <Wrench className="w-5 h-5" />,
     syllabus: [
       {
-        module: 'Technical Curriculum',
+        module: 'I. Mechanics & Motion',
         items: [
           {
-            title: 'Coming Soon',
-            concepts: ['The detailed session-by-session syllabus for this track will be shared with enrolled students at the start of the program.'],
-            outcome: 'Stay tuned for the racing roadmap.'
+            concepts: ['Wheels, axles, and how things roll', 'Basic physics of speed'],
+            activities: ['Sketching vehicle chassis and frames'],
+            outcome: 'Understanding the elementary mechanics of vehicle design.'
+          }
+        ]
+      },
+      {
+        module: 'II. Driver Logic & Safety',
+        items: [
+          {
+            title: 'Steering & Braking',
+            concepts: ['Track safety rules and flag meanings', 'Turning mechanisms'],
+            activities: ['Simulator/Hands-on steering practice'],
+            outcome: 'Learning high-level driving logic and track etiquette.'
+          }
+        ]
+      },
+      {
+        module: 'III. Aerodynamics (Grand Prix)',
+        items: [
+          {
+            concepts: ['How shape and weight affect performance', 'Chassis stability'],
+            activities: ['Chassis-build collaborative project'],
+            outcome: 'Building a foundation for advanced engineering and racing.'
           }
         ]
       }
@@ -206,7 +345,7 @@ const KidsLabPrograms = ({ setCurrentView }: KidsLabProgramsProps) => {
             <Star className="w-4 h-4" />
           </div>
           <h1 className="text-4xl md:text-5xl font-display text-stone-900 mb-2 leading-tight">
-            Kids Lab <br/>
+            Kid Lab (Basic) <br/>
             <span className="italic font-light text-kalika-red">Creative Discovery.</span>
           </h1>
         </div>
