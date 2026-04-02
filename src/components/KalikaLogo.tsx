@@ -107,7 +107,7 @@ const KalikaLogo = ({
 
   const kalikaWidth = "KALIKA".length * (charWidth + gap);
   const sphereWidth = "SPHERE".length * (charWidth + gap);
-  const viewBoxWidth = Math.max(kalikaWidth, sphereWidth);
+  const viewBoxWidth = Math.max(kalikaWidth, sphereWidth) + 40;
 
   return (
     <div className={`inline-block ${className}`} style={{ width: viewBoxWidth * scale, height: (charHeight * 2.5) * scale }}>
@@ -123,6 +123,15 @@ const KalikaLogo = ({
         {showSubText && (
            <g className="hover:opacity-80 transition-opacity cursor-pointer" transform={`translate(2, ${charHeight + 12}) scale(0.95)`}>
              {renderWord("SPHERE", currentColors.sphere, 0)}
+             <text 
+               x={sphereWidth} 
+               y={charHeight - 2} 
+               fill={currentColors.sphere} 
+               fontSize="20" 
+               fontWeight="black"
+             >
+               TM
+             </text>
            </g>
          )}
       </svg>

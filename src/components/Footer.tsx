@@ -15,7 +15,7 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-4 lg:col-span-5">
             <div className="flex flex-col lg:flex-row lg:items-center gap-8 mb-12">
               <div className="relative w-32 h-32 lg:w-48 lg:h-48 flex items-center justify-center flex-shrink-0 animate-float">
-                <img src={logo} alt="Kalika Sphere Logo" className="w-full h-full object-contain" />
+                <img src={logo} alt="Kalika Sphere Logo" className="w-full h-full object-contain" style={{ mixBlendMode: 'multiply' }} />
               </div>
               <div className="flex flex-col justify-center">
                 <KalikaLogo size="xl" theme="light" />

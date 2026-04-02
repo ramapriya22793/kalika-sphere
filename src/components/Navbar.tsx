@@ -66,7 +66,7 @@ const Navbar = ({ setCurrentView, currentView }: NavbarProps) => {
             className="flex items-center gap-2 md:gap-4 cursor-pointer group"
           >
             <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center flex-shrink-0">
-              <img src={logoAsset} alt="Kalika Sphere Logo" className="w-full h-full object-contain hover:rotate-12 transition-transform duration-500" />
+              <img src={logoAsset} alt="Kalika Sphere Logo" className="w-full h-full object-contain hover:rotate-12 transition-transform duration-500" style={{ mixBlendMode: 'multiply' }} />
             </div>
             <div className="block">
               <KalikaLogo size={isMobile ? 'sm' : 'md'} />
