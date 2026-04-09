@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, CreditCard, Smartphone, CheckCircle2, Wallet, ShieldCheck } from 'lucide-react';
 import { supabase } from '../supabaseClient';
+import logoAsset from '../assets/logo.png';
+import KalikaLogo from './KalikaLogo';
 
 interface EnrollmentFormProps {
   setCurrentView?: (view: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll' | 'summer-workshop') => void;
@@ -99,17 +101,39 @@ const EnrollmentForm = ({ setCurrentView }: EnrollmentFormProps) => {
   }
 
   return (
-    <div className="min-h-screen pt-28 pb-20 px-4 md:px-8 bg-stone-50 relative font-sans">
+    <div className="min-h-screen pt-12 pb-20 px-4 md:px-8 bg-stone-50 relative font-sans">
       <div className="max-w-[1100px] mx-auto relative z-10">
         
-        {/* Navigation */}
-        <button 
-          onClick={() => setCurrentView && setCurrentView('home')}
-          className="flex items-center gap-2 text-stone-500 hover:text-[#C21515] font-bold text-xs uppercase tracking-widest mb-8 transition-colors group"
-        >
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          Back to Kalika Sphere
-        </button>
+        {/* Navigation & Brand Header */}
+        <div className="flex flex-col gap-6 mb-8">
+          {/* Capsule Brand Bar */}
+          <div 
+            onClick={() => setCurrentView && setCurrentView('home')}
+            className="flex items-center justify-between gap-4 cursor-pointer group bg-stone-200/90 backdrop-blur-3xl px-6 py-3 rounded-full border border-white/40 shadow-premium transition-all hover:bg-stone-200 w-full md:w-auto md:min-w-[400px]"
+          >
+            <div className="flex items-center gap-4">
+              <img src={logoAsset} alt="Logo" className="w-10 h-10 object-contain group-hover:rotate-12 transition-transform duration-500" />
+              <KalikaLogo size="sm" theme="light" showSubText={true} />
+            </div>
+            
+            {/* Circular Menu Button Look-alike */}
+            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm border border-stone-100">
+              <div className="flex flex-col gap-1">
+                <div className="w-4 h-[2px] bg-stone-900 rounded-full"></div>
+                <div className="w-4 h-[2px] bg-stone-900 rounded-full"></div>
+                <div className="w-4 h-[2px] bg-stone-900 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+
+          <button 
+            onClick={() => setCurrentView && setCurrentView('home')}
+            className="flex items-center gap-2 text-stone-400 hover:text-[#C21515] font-bold text-[10px] uppercase tracking-widest transition-colors group px-4"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+            Back to Home
+          </button>
+        </div>
 
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           

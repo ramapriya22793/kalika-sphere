@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Sun } from 'lucide-react';
 
 interface SummerFloatingTabProps {
-  setCurrentView: (view: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll' | 'summer-workshop') => void;
+  setCurrentView: (view: 'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll' | 'summer-workshop' | 'enroll-splash') => void;
   currentView: string;
 }
 

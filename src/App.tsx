@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import HeroSection from './components/HeroSection';
 import Navbar from './components/Navbar';
 import AnnouncementBar from './components/AnnouncementBar';
@@ -11,19 +11,37 @@ import Footer from './components/Footer';
 import EnrollmentForm from './components/EnrollmentForm';
 import SummerWorkshop from './components/SummerWorkshop';
 import SummerFloatingTab from './components/SummerFloatingTab';
+import EnrollmentSplash from './components/EnrollmentSplash';
 
 function App() {
-  const [currentView, setCurrentView] = useState<'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll' | 'summer-workshop'>('home');
+  const [currentView, setCurrentView] = useState<'home' | 'programs' | 'pro-programs' | 'gallery' | 'enroll' | 'summer-workshop' | 'enroll-splash'>('home');
   const [workshopOpenId, setWorkshopOpenId] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Check if the user arrived via the social media link
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('join') === 'true') {
+      setCurrentView('enroll-splash');
+    }
+  }, []);
+
+  if (currentView === 'enroll-splash') {
+    return <EnrollmentSplash setCurrentView={setCurrentView} />;
+  }
+
+  // Hide bars during enrollment for a clean flow
+  const isEnrollmentFlow = currentView === 'enroll';
 
   return (
     <div className="min-h-screen bg-kalika-cream font-sans selection:bg-kalika-red selection:text-white">
-      <AnnouncementBar setCurrentView={setCurrentView} />
-      <Navbar 
-        setCurrentView={setCurrentView} 
-        currentView={currentView} 
-      />
-      <SummerFloatingTab setCurrentView={setCurrentView} currentView={currentView} />
+      {!isEnrollmentFlow && <AnnouncementBar setCurrentView={setCurrentView} />}
+      {!isEnrollmentFlow && (
+        <Navbar 
+          setCurrentView={setCurrentView} 
+          currentView={currentView} 
+        />
+      )}
+      {!isEnrollmentFlow && <SummerFloatingTab setCurrentView={setCurrentView} currentView={currentView} />}
       
       {currentView === 'home' ? (
         <main>
